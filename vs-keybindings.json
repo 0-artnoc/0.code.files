@@ -1,0 +1,96 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "cmd+,",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "cmd+.",
+        "command": "workbench.action.gotoSymbol",
+        "when": "editorFocus"
+    },
+    {
+        "key": "cmd+w",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+    },
+    {
+        "key": "cmd+d",
+        "command": "editor.action.deleteLines",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+f12",
+        "command": "editor.action.previewDeclaration",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+shift+w",
+        "command": "expandLineSelection",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+shift+right",
+        "command": "workbench.action.focusNextGroup"
+    },
+    {
+        "key": "cmd+shift+left",
+        "command": "workbench.action.focusPreviousGroup"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.previousEditor",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.nextEditor",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+right",
+        "command": "editor.action.smartSelect.grow",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+left",
+        "command": "editor.action.smartSelect.shrink",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+k k",
+        "command": "workbench.action.closeEditorsInOtherGroups",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "cmd+w",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "cmd+j",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    }
+]

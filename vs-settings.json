@@ -1,0 +1,130 @@
+// Place your settings in this file to overwrite the default settings
+{
+  // "files.autoSave": "afterDelay",
+  // "files.autoSaveDelay": 5000,
+  // Controls whether the editor should highlight similar matches to the selection
+  "editor.selectionHighlight": false,
+  "extensions.autoUpdate": false,
+  "editor.parameterHints": false,
+  "editor.cursorBlinking": "solid",
+  // "editor.cursorStyle": "line",
+  "editor.minimap.enabled": false,
+  "editor.matchBrackets": true,
+  "editor.formatOnType": true,
+  "editor.renderIndentGuides": false,
+  "editor.autoIndent": true,
+  "editor.renderLineHighlight": "none",
+  "diffEditor.renderSideBySide": false,
+  "window.restoreWindows": "none",
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
+
+  // exclude files from being shown in explorer
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*/__pycache__": true,
+    "**/node_modules": true
+  },
+
+  //python
+  "python.pythonPath": "/usr/local/bin/python3",
+  //golang
+  "go.formatTool": "gofmt",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/typings": true,
+    "**/__pycache__": true,
+    "**/.DS_Store": true
+  },
+  //cpp
+  "C_Cpp.intelliSenseEngine": "Default",
+  //swift
+  "swiftlint.enable": true,
+  //typescript
+  // Defines space handling after opening and before closing non empty brackets.
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  "tslint.jsEnable": true,
+  //macos native settings
+  "window.nativeTabs": true,
+  "workbench.editor.swipeToNavigate": true,
+  "window.titleBarStyle": "native",
+  //language settings
+  "[cpp]": {
+    "editor.tabSize": 4,
+    "editor.autoClosingBrackets": true
+  },
+  "[go]": {
+    "editor.insertSpaces": true
+  },
+  "[c]": {
+    "editor.tabSize": 4,
+    "editor.autoClosingBrackets": true
+  },
+  "[javascript]": {
+    "editor.tabSize": 4,
+    "editor.autoClosingBrackets": true
+  },
+  "[typescript]": {
+    "editor.tabSize": 4,
+    "editor.autoClosingBrackets": true
+  },
+  "[json]": {
+    "editor.tabSize": 4
+  },
+  "[html]": {
+    "editor.tabSize": 2
+  },
+  "[swift]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false
+    },
+    "editor.tabSize": 4,
+    "editor.autoClosingBrackets": true
+  },
+  "workbench.activityBar.visible": true,
+  "workbench.editor.enablePreview": true,
+  // VIM settings
+  "vim.easymotion": true,
+  // "vim.easymotionMarkerWidthPerChar": 11,
+  // "vim.easymotionMarkerFontSize": "16",
+  "vim.easymotionMarkerForegroundColorOneChar": "#00FF00",
+  "vim.easymotionMarkerForegroundColorTwoChar": "#00FF00",
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.otherModesKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-n>"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": ":nohl",
+          "args": []
+        }
+      ]
+    }
+  ],
+  "vim.leader": ",",
+  "vim.disableAnnoyingNeovimMessage": true,
+  "workbench.startupEditor": "none"
+}
