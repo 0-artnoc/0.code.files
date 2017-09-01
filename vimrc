@@ -57,6 +57,7 @@ autocmd FileType html,css EmmetInstall
 " YCM
 let g:ycm_python_binary_path='/usr/local/bin/python3'
 let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_auto_trigger=0
 
 " setup ctrlp
 let g:ctrlp_map='<c-p>'
@@ -90,6 +91,8 @@ let g:go_metalinter_deadline = "5s"
 
 " setup airline
 set laststatus=2
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#fnamemod=':t'
 let g:airline_powerline_fonts=1
 let g:airline_theme='papercolor'
 let g:airline_section_c='%t%m'
