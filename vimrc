@@ -74,6 +74,11 @@ let g:typescript_compiler_options=''
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost l* nested lwindow
 
+" python run current file output in split buffer
+command! Pr new | 0read !python3 #:t
+" node run current file output in split buffer
+command! Nr new | 0read !node #:t
+
 " golang
 au FileType go nmap <leader>gr <Plug>(go-run)
 au FileType go nmap <leader>gi <Plug>(go-info)
@@ -106,6 +111,7 @@ nnoremap <C-l> :bnext<CR>
 
 " use jshint//syntastic
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_typescript_checkers = ['tslint', 'tsc']
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_post_args="--max-line-length=120"
 set statusline+=%#warningmsg#
@@ -144,12 +150,12 @@ set numberwidth=4
 " tabs
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set autoindent
 set expandtab
 set cindent
 set smartindent
 set showcmd
-" set softtabstop=4
 
 " remove quickfix list from buffer next/previous
 augroup qf
@@ -233,11 +239,11 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 
 " handle { } brackets
 inoremap { {<Space>}<Left>
-inoremap {<CR> {<CR>}<Esc>O<TAB>
+inoremap {<CR> {<CR>}<Esc>O
 
 " turn off search highlighting
 nnoremap <CR> :noh<CR><CR>
 
 set noerrorbells
 set novisualbell
-set ttimeoutlen=0
+set timeoutlen=250
