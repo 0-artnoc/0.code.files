@@ -1,23 +1,44 @@
 // Place your settings in this file to overwrite the default settings
 {
-  // "files.autoSave": "afterDelay",
-  // "files.autoSaveDelay": 5000,
-  // Controls whether the editor should highlight similar matches to the selection
+  "zenMode.hideTabs": false,
+  "explorer.autoReveal": false,
+  "explorer.openEditors.visible": 0,
+  "explorer.sortOrder": "type",
+  "editor.folding": false,
+  "editor.suggestLineHeight": 18,
   "editor.selectionHighlight": false,
-  "extensions.autoUpdate": false,
   "editor.parameterHints": false,
+  "editor.wordBasedSuggestions": false,
   "editor.cursorBlinking": "solid",
-  // "editor.cursorStyle": "line",
+  "editor.fontFamily": " Fira Code",
+  "editor.fontLigatures": true,
+  "editor.lineHeight": 16,
+  "editor.lineNumbers": "on",
+  "editor.fontSize": 12,
   "editor.minimap.enabled": false,
   "editor.matchBrackets": true,
   "editor.formatOnType": true,
-  "editor.renderIndentGuides": false,
+  "editor.renderIndentGuides": true,
   "editor.autoIndent": true,
-  "editor.renderLineHighlight": "none",
+  "editor.tabSize": 2,
+  "editor.renderLineHighlight": "line",
+  "editor.insertSpaces": false,
+  "editor.snippetSuggestions": "none",
+  // "editor.quickSuggestions": {
+  //   "other": false,
+  //   "comments": false,
+  //   "strings": false
+  // },
   "diffEditor.renderSideBySide": false,
   "window.restoreWindows": "none",
-  "window.title": "${activeEditorMedium}${separator}${rootName}",
-
+  "window.nativeTabs": true,
+  "window.title": "You're here - ${separator}${activeEditorMedium}",
+  "terminal.external.osxExec": "iTerm.app",
+  "gitlens.blame.line.enabled": false,
+  "gitlens.statusBar.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  "files.trimTrailingWhitespace": true,
+  "files.hotExit": "off",
   // exclude files from being shown in explorer
   "files.exclude": {
     "**/.git": true,
@@ -28,28 +49,25 @@
     "**/*/__pycache__": true,
     "**/node_modules": true
   },
-
   //python
   "python.pythonPath": "/usr/local/bin/python3",
+  "python.venvPath": "/Users/jberria/PyEnvironements/",
   //golang
-  "go.formatTool": "gofmt",
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
     "**/typings": true,
     "**/__pycache__": true,
-    "**/.DS_Store": true
+    "**/.DS_Store": true,
+    "**/ios/build": true // react native
   },
   //cpp
   "C_Cpp.intelliSenseEngine": "Default",
-  //swift
-  "swiftlint.enable": true,
   //typescript
   // Defines space handling after opening and before closing non empty brackets.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
   "tslint.jsEnable": true,
   //macos native settings
-  "window.nativeTabs": true,
   "workbench.editor.swipeToNavigate": true,
   "window.titleBarStyle": "native",
   //language settings
@@ -58,25 +76,15 @@
     "editor.autoClosingBrackets": true
   },
   "[go]": {
-    "editor.insertSpaces": true
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4
   },
   "[c]": {
     "editor.tabSize": 4,
     "editor.autoClosingBrackets": true
   },
-  "[javascript]": {
-    "editor.tabSize": 4,
-    "editor.autoClosingBrackets": true
-  },
-  "[typescript]": {
-    "editor.tabSize": 4,
-    "editor.autoClosingBrackets": true
-  },
   "[json]": {
     "editor.tabSize": 4
-  },
-  "[html]": {
-    "editor.tabSize": 2
   },
   "[swift]": {
     "editor.quickSuggestions": {
@@ -87,44 +95,39 @@
     "editor.tabSize": 4,
     "editor.autoClosingBrackets": true
   },
-  "workbench.activityBar.visible": true,
-  "workbench.editor.enablePreview": true,
-  // VIM settings
-  "vim.easymotion": true,
-  // "vim.easymotionMarkerWidthPerChar": 11,
-  // "vim.easymotionMarkerFontSize": "16",
-  "vim.easymotionMarkerForegroundColorOneChar": "#00FF00",
-  "vim.easymotionMarkerForegroundColorTwoChar": "#00FF00",
-  "vim.incsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
-  "vim.hlsearch": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
-  ],
-  "vim.otherModesKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<C-n>"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": ":nohl",
-          "args": []
-        }
-      ]
-    }
-  ],
-  "vim.leader": ",",
-  "vim.disableAnnoyingNeovimMessage": true,
-  "workbench.startupEditor": "none"
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+  },
+  "workbench.activityBar.visible": false,
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.visible": true,
+  "workbench.commandPalette.history": 5,
+  "workbench.fontAliasing": "antialiased",
+  "workbench.editor.revealIfOpen": true,
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Material Theme",
+  "workbench.colorCustomizations": {
+    "activityBarBadge.background": "#FF7042",
+    "list.activeSelectionForeground": "#FF7042",
+    "list.inactiveSelectionForeground": "#FF7042",
+    "list.highlightForeground": "#FF7042",
+    "scrollbarSlider.activeBackground": "#FF704250",
+    "editorSuggestWidget.highlightForeground": "#FF7042",
+    "textLink.foreground": "#FF7042",
+    "progressBar.background": "#FF7042",
+    "pickerGroup.foreground": "#FF7042",
+    "tab.activeBorder": "#FF7042",
+    "sideBar.background": "#22323a",
+    "editor.background": "#1b2b34",
+    "sideBarSectionHeader.background": "#22323a",
+    "peekView.border": "#000000",
+    "editorLineNumber.foreground": "#6c7c8c",
+    "sideBar.foreground": "#b3c0cc",
+    "statusBar.foreground": "#b3c0cc",
+  },
+  "materialTheme.cache.workbench.settings": {
+    "accent": "Orange",
+    "themeColours": "Default"
+  }
 }
