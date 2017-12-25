@@ -51,23 +51,28 @@
         "command": "git.stage"
     },
     {
-        "key": "cmd+g cmd+s",
-        "command": "gitlens.showQuickRepoStatus",
-        "when": "gitlens:enabled"
+        "key": "cmd+g cmd+c",
+        "command": "git.commitWithInput",
+        "args": ["-v"]
     },
-    {
-        "key": "alt+s",
-        "command": "-gitlens.showQuickRepoStatus",
-        "when": "gitlens:enabled"
-    },
+    // {
+    //     "key": "cmd+g cmd+s",
+    //     "command": "gitlens.showQuickRepoStatus",
+    //     "when": "gitlens:enabled"
+    // },
+    // {
+    //     "key": "alt+s",
+    //     "command": "-gitlens.showQuickRepoStatus",
+    //     "when": "gitlens:enabled"
+    // },
+    // {
+    //     "key": "alt+s",
+    //     "command": "-gitlens.showQuickRepoStatus",
+    //     "when": "gitlens:enabled && gitlens:keymap == 'standard'"
+    // },
     {
         "key": "alt+c",
         "command": "-gitlens.showQuickCommitFileDetails",
         "when": "editorTextFocus && gitlens:enabled && gitlens:keymap == 'standard'"
     },
-    {
-        "key": "alt+s",
-        "command": "-gitlens.showQuickRepoStatus",
-        "when": "gitlens:enabled && gitlens:keymap == 'standard'"
-    }
 ]

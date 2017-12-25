@@ -1,11 +1,13 @@
 // Place your settings in this file to overwrite the default settings
 {
   "zenMode.hideTabs": false,
+  "diffEditor.renderSideBySide": false,
+
   "explorer.autoReveal": false,
   "explorer.openEditors.visible": 0,
   "explorer.sortOrder": "type",
+
   "editor.folding": false,
-  "editor.suggestLineHeight": 18,
   "editor.selectionHighlight": false,
   "editor.parameterHints": false,
   "editor.wordBasedSuggestions": false,
@@ -14,7 +16,7 @@
   "editor.fontLigatures": true,
   "editor.lineHeight": 16,
   "editor.lineNumbers": "on",
-  "editor.fontSize": 12,
+  "editor.fontSize": 13,
   "editor.minimap.enabled": false,
   "editor.matchBrackets": true,
   "editor.formatOnType": true,
@@ -24,19 +26,18 @@
   "editor.renderLineHighlight": "line",
   "editor.insertSpaces": false,
   "editor.snippetSuggestions": "none",
-  // "editor.quickSuggestions": {
-  //   "other": false,
-  //   "comments": false,
-  //   "strings": false
-  // },
-  "diffEditor.renderSideBySide": false,
+
   "window.restoreWindows": "none",
   "window.nativeTabs": true,
   "window.title": "You're here - ${separator}${activeEditorMedium}",
+  "window.titleBarStyle": "native",
+
   "terminal.external.osxExec": "iTerm.app",
-  "gitlens.blame.line.enabled": false,
-  "gitlens.statusBar.enabled": false,
-  "gitlens.codeLens.enabled": false,
+  // "gitlens.blame.line.enabled": false,
+  // "gitlens.statusBar.enabled": false,
+  // "gitlens.codeLens.enabled": false,
+  "git.decorations.enabled": false,
+
   "files.trimTrailingWhitespace": true,
   "files.hotExit": "off",
   // exclude files from being shown in explorer
@@ -52,7 +53,6 @@
   //python
   "python.pythonPath": "/usr/local/bin/python3",
   "python.venvPath": "/Users/jberria/PyEnvironements/",
-  //golang
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
@@ -61,15 +61,11 @@
     "**/.DS_Store": true,
     "**/ios/build": true // react native
   },
-  //cpp
-  "C_Cpp.intelliSenseEngine": "Default",
   //typescript
-  // Defines space handling after opening and before closing non empty brackets.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
   "tslint.jsEnable": true,
-  //macos native settings
-  "workbench.editor.swipeToNavigate": true,
-  "window.titleBarStyle": "native",
+  "javascript.nameSuggestions": false,
+
   //language settings
   "[cpp]": {
     "editor.tabSize": 4,
@@ -99,6 +95,9 @@
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
   },
+
+  "workbench.iconTheme": "flatland-icon-theme",
+  "workbench.editor.swipeToNavigate": true,
   "workbench.activityBar.visible": false,
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
@@ -112,22 +111,36 @@
     "list.activeSelectionForeground": "#FF7042",
     "list.inactiveSelectionForeground": "#FF7042",
     "list.highlightForeground": "#FF7042",
+
     "scrollbarSlider.activeBackground": "#FF704250",
     "editorSuggestWidget.highlightForeground": "#FF7042",
     "textLink.foreground": "#FF7042",
     "progressBar.background": "#FF7042",
     "pickerGroup.foreground": "#FF7042",
     "tab.activeBorder": "#FF7042",
-    "sideBar.background": "#22323a",
     "editor.background": "#1b2b34",
     "sideBarSectionHeader.background": "#22323a",
-    "peekView.border": "#000000",
-    "editorLineNumber.foreground": "#6c7c8c",
+    "peekView.border": "#cc5050",
+    "peekViewEditor.background": "#283b47",
+    "peekViewResult.background": "#283b47",
+    "peekViewEditorGutter.background": "#283b47",
+    "peekViewEditor.matchHighlightBackground": "#013819",
+
+    "editorLineNumber.foreground": "#556474",
+    "sideBar.background": "#22323a",
     "sideBar.foreground": "#b3c0cc",
     "statusBar.foreground": "#b3c0cc",
+    "statusBar.background": "#22323a",
+    "panel.background": "#22323a",
   },
   "materialTheme.cache.workbench.settings": {
     "accent": "Orange",
     "themeColours": "Default"
-  }
+  },
+
+  "react-native.ios.runArguments.simulator": [
+    "--simulator",
+    "iPhone X"
+  ],
+  "jest.autoEnable": false
 }
