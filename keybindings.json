@@ -16,10 +16,6 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "cmd+j",
-        "command": "workbench.action.terminal.focus"
-    },
-    {
         "key": "ctrl+b",
         "command": "workbench.action.toggleSidebarVisibility"
     },
@@ -53,7 +49,9 @@
     {
         "key": "cmd+g cmd+c",
         "command": "git.commitWithInput",
-        "args": ["-v"]
+        "args": [
+            "-v"
+        ]
     },
     // {
     //     "key": "cmd+g cmd+s",
@@ -74,5 +72,5 @@
         "key": "alt+c",
         "command": "-gitlens.showQuickCommitFileDetails",
         "when": "editorTextFocus && gitlens:enabled && gitlens:keymap == 'standard'"
-    },
+    }
 ]

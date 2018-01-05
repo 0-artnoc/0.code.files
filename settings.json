@@ -8,6 +8,7 @@
   "explorer.sortOrder": "type",
 
   "editor.folding": false,
+  "editor.lineNumbers": "on",
   "editor.selectionHighlight": false,
   "editor.parameterHints": false,
   "editor.wordBasedSuggestions": false,
@@ -15,8 +16,8 @@
   "editor.fontFamily": " Fira Code",
   "editor.fontLigatures": true,
   "editor.lineHeight": 16,
-  "editor.lineNumbers": "on",
   "editor.fontSize": 13,
+  "editor.letterSpacing": 0.25,
   "editor.minimap.enabled": false,
   "editor.matchBrackets": true,
   "editor.formatOnType": true,
@@ -29,13 +30,13 @@
 
   "window.restoreWindows": "none",
   "window.nativeTabs": true,
-  "window.title": "You're here - ${separator}${activeEditorMedium}",
+  "window.title": "You're here ☞ ${separator}${activeEditorMedium}",
   "window.titleBarStyle": "native",
 
   "terminal.external.osxExec": "iTerm.app",
-  // "gitlens.blame.line.enabled": false,
-  // "gitlens.statusBar.enabled": false,
-  // "gitlens.codeLens.enabled": false,
+  "gitlens.blame.line.enabled": false,
+  "gitlens.statusBar.enabled": false,
+  "gitlens.codeLens.enabled": false,
   "git.decorations.enabled": false,
 
   "files.trimTrailingWhitespace": true,
@@ -59,12 +60,19 @@
     "**/typings": true,
     "**/__pycache__": true,
     "**/.DS_Store": true,
+    "**/private": true,
+    "**/var": true,
+    "**/.git": true,
     "**/ios/build": true // react native
   },
   //typescript
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
   "tslint.jsEnable": true,
   "javascript.nameSuggestions": false,
+
+  //go
+  "go.coverageDecorator": "gutter",
+  "go.coverageOptions": "showCoveredCodeOnly",
 
   //language settings
   "[cpp]": {
@@ -105,42 +113,28 @@
   "workbench.fontAliasing": "antialiased",
   "workbench.editor.revealIfOpen": true,
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Material Theme",
   "workbench.colorCustomizations": {
-    "activityBarBadge.background": "#FF7042",
-    "list.activeSelectionForeground": "#FF7042",
-    "list.inactiveSelectionForeground": "#FF7042",
-    "list.highlightForeground": "#FF7042",
-
-    "scrollbarSlider.activeBackground": "#FF704250",
-    "editorSuggestWidget.highlightForeground": "#FF7042",
-    "textLink.foreground": "#FF7042",
-    "progressBar.background": "#FF7042",
-    "pickerGroup.foreground": "#FF7042",
-    "tab.activeBorder": "#FF7042",
-    "editor.background": "#1b2b34",
-    "sideBarSectionHeader.background": "#22323a",
-    "peekView.border": "#cc5050",
-    "peekViewEditor.background": "#283b47",
-    "peekViewResult.background": "#283b47",
-    "peekViewEditorGutter.background": "#283b47",
-    "peekViewEditor.matchHighlightBackground": "#013819",
-
-    "editorLineNumber.foreground": "#556474",
-    "sideBar.background": "#22323a",
-    "sideBar.foreground": "#b3c0cc",
-    "statusBar.foreground": "#b3c0cc",
-    "statusBar.background": "#22323a",
-    "panel.background": "#22323a",
-  },
-  "materialTheme.cache.workbench.settings": {
-    "accent": "Orange",
-    "themeColours": "Default"
+    "peekViewEditor.matchHighlightBackground": "#284963",
+    "editorSuggestWidget.selectedBackground": "#284963",
+    "diffEditor.insertedTextBackground": "#294b2e91",
   },
 
   "react-native.ios.runArguments.simulator": [
     "--simulator",
     "iPhone X"
   ],
-  "jest.autoEnable": false
+  "workbench.colorTheme": "Atom Material Theme",
+  "vim.easymotion": true,
+  "vim.leader": ",",
+  "vim.useSystemClipboard": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j","j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.handleKeys":{
+    "<C-a>": false,
+    "<C-f>": false
+  }
 }
