@@ -106,6 +106,7 @@ noremap <Right> <NOP>
 " Move between buffers with Shift + arrow key...
 nnoremap <S-Left> :bprevious<cr>
 nnoremap <S-Right> :bnext<cr>
+nnoremap <C-w> :bdelete<cr>
 
 " ... but skip the quickfix when navigating
 augroup qf
