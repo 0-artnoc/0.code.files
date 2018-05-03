@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
   "zenMode.hideTabs": false,
-  "diffEditor.renderSideBySide": false,
+  "diffEditor.renderSideBySide": true,
 
   "explorer.autoReveal": false,
   "explorer.openEditors.visible": 0,
@@ -16,6 +16,7 @@
   "editor.wordBasedSuggestions": false,
   "editor.cursorBlinking": "solid",
   "editor.fontLigatures": true,
+  "editor.fontFamily": "Fira Code",
   "editor.minimap.enabled": false,
   "editor.matchBrackets": true,
   "editor.formatOnType": true,
@@ -25,19 +26,16 @@
   "editor.renderLineHighlight": "line",
   "editor.insertSpaces": false,
   "editor.snippetSuggestions": "none",
+  "editor.find.autoFindInSelection": true,
 
   "window.restoreWindows": "none",
-  "window.nativeTabs": true,
-  "window.title": "You're here ☞ ${separator}${activeEditorMedium}",
   "window.titleBarStyle": "native",
+  "window.title": "${folderName}${separator}${activeEditorMedium}",
 
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.shell.osx": "/bin/zsh",
   "terminal.integrated.fontFamily": "Fira Code",
   "terminal.integrated.fontWeightBold": "normal",
-  // "gitlens.blame.line.enabled": false,
-  // "gitlens.statusBar.enabled": false,
-  // "gitlens.codeLens.enabled": false,
   "git.decorations.enabled": false,
 
   "files.trimTrailingWhitespace": true,
@@ -64,6 +62,7 @@
     "**/private": true,
     "**/var": true,
     "**/.git": true,
+    "**/*.map": true,
     "**/ios/build": true // react native
   },
   //typescript
@@ -75,8 +74,22 @@
   "go.coverageDecorator": "gutter",
   "go.coverageOptions": "showCoveredCodeOnly",
   "go.testFlags": ["-v"],
+  "go.formatTool": "goimports",
+  "go.lintTool": "gometalinter",
+  "go.lintFlags": [
+    "--disable=all",
+    "--enable=vet",
+    "--enable=golint",
+    "--enable=deadcode",
+    "--enable=errcheck",
+    "--enable=structcheck",
+  ],
 
   //language settings
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.autoClosingBrackets": true
+  },
   "[cpp]": {
     "editor.tabSize": 4,
     "editor.autoClosingBrackets": true
@@ -106,44 +119,39 @@
     "editor.insertSpaces": true,
     "editor.useTabStops": true
   },
+
+  "workbench.statusBar.feedback.visible": false,
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.colorTheme": "One Monokai Darker",
   "workbench.editor.swipeToNavigate": true,
-  "workbench.activityBar.visible": true,
+  "workbench.activityBar.visible": false,
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.commandPalette.history": 5,
   "workbench.fontAliasing": "antialiased",
   "workbench.editor.revealIfOpen": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,
-  "window.zoomLevel": 0,
   "workbench.colorCustomizations": {
     "activityBar.background": "#1e1e1e",
     "editorCursor.foreground": "#a8caeb",
     "activityBarBadge.background": "#046dc4",
     "scrollbarSlider.background": "#30445500",
-    "editorActiveLineNumber.foreground": "#ffffff"
   },
+  "window.zoomLevel": 0,
 
   "react-native.ios.runArguments.simulator": [
     "--simulator",
     "iPhone X"
   ],
+
   "vim.easymotion": true,
   "vim.leader": ",",
   "vim.useSystemClipboard": true,
-  // "vim.insertModeKeyBindings": [
-  //   {
-  //     "before": ["j","j"],
-  //     "after": ["<Esc>"]
-  //   }
-  // ],
-  // "vim.handleKeys":{
-  //   "<C-a>": false,
-  //   "<C-f>": false
-  // },
   "vim.showmodename": false,
   "vim.useCtrlKeys": false,
+
   "explorer.confirmDelete": false,
-  "workbench.iconTheme": "vscode-icons",
   "diffEditor.ignoreTrimWhitespace": true,
-  "workbench.statusBar.feedback.visible": false
+  "debug.showInStatusBar": "never",
+  "gitk.fontFamily": "Fira Code",
 }

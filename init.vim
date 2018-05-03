@@ -7,13 +7,21 @@ call plug#begin('~/.vim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neomake/neomake'
 Plug '/usr/local/opt/fzf'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf.vim'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/echodoc.vim'
+Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
 Plug 'sebdah/vim-delve'
-Plug 'tpope/vim-fugitive'
-Plug 'fatih/vim-go'
+Plug 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim'
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+Plug 'sebastianmarkow/deoplete-rust'
 Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
 Plug 'zchee/deoplete-jedi'                     " Go auto completion
 Plug 'pangloss/vim-javascript'
@@ -22,8 +30,8 @@ Plug 'mhartington/nvim-typescript'
 Plug 'vim-airline/vim-airline'
 
 " Colorschemes
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'rakr/vim-one'
+Plug 'nightsense/simplifysimplify'
 Plug 'mhartington/oceanic-next'
 
 call plug#end()
@@ -51,26 +59,29 @@ set formatoptions=tcqronj         " set vims text formatting options
 set softtabstop=2
 set tabstop=2
 set title                         " let vim set the terminal title
-set updatetime=100                " redraw the status bar often
+set updatetime=750                " redraw the status bar often
 "set cmdheight=2
 set noshowmode
-
+set hidden
+set ignorecase
 syntax enable
 
+let mapleader = ','
 let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
-
-let mapleader = ','
-
 " Remove trailing white spaces on save
 autocmd BufWritePre * :%s/\s\+$//e
-
 " ignore files / folders
 set wildignore+=*/node_modules/*
-" set fzf
+
+"----------------------------------------------
+" FZF
+"----------------------------------------------
 set rtp+=/usr/local/opt/fzf
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore node_modules --ignore .git -g ""'
 noremap <C-p> :Files<cr>
+noremap <C-c> :Commits<cr>
+noremap ;			:Buffers<cr>
 
 " neomake
 call neomake#configure#automake('nw', 750)
@@ -81,18 +92,23 @@ let g:neomake_open_list = 2
 "----------------------------------------------
 set incsearch                     " move to match as you type the search query
 set hlsearch                      " disable search result highlighting
+map <leader>c :nohlsearch<cr>     " clear search highlights
 
 if has('nvim')
     set inccommand=split          " enables interactive search and replace
 endif
 
-" Clear search highlights
-map <leader>c :nohlsearch<cr>
 
 " These mappings will make it so that going to the next one in a search will
 " center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+"----------------------------------------------
+" Vimwiki
+"----------------------------------------------
+let g:vimwiki_list=[{'path': '~/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+nmap <leader>wv <plug>VimwikiVSplitLink
 
 "----------------------------------------------
 " Navigation
@@ -106,7 +122,6 @@ noremap <Right> <NOP>
 " Move between buffers with Shift + arrow key...
 nnoremap <S-Left> :bprevious<cr>
 nnoremap <S-Right> :bnext<cr>
-nnoremap <C-w> :bdelete<cr>
 
 " ... but skip the quickfix when navigating
 augroup qf
@@ -117,8 +132,6 @@ augroup END
 "----------------------------------------------
 " Curly brace close
 "----------------------------------------------
-
-"auto close {
 function! s:CloseBracket()
     let line = getline('.')
     if line =~# '^\s*\(struct\|class\|enum\|interface\) '
@@ -135,11 +148,12 @@ inoremap <expr> {<Enter> <SID>CloseBracket()
 "----------------------------------------------
 " Colors
 "----------------------------------------------
-"colorscheme PaperColor
-colorscheme one
-"colorscheme OceanicNext
-set background=dark
+colorscheme simplifysimplify-dark
 set termguicolors
+hi LineNr guibg=off
+highlight VertSplit guibg=off
+highlight VertSplit guifg=off
+set guifont=Monospace:h12
 
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod=':t'
@@ -147,6 +161,7 @@ let g:airline_powerline_fonts=1
 let g:airline_section_c='%t%m'
 let g:airline_section_y=''
 let g:airline_detect_modified=1
+let g:airline#extensions#whitespace#enabled = 0
 "let g:airline#extensions#tabline#enabled = 2
 "let g:airline#extensions#tabline#fnamemod = ':t'
 "let g:airline#extensions#tabline#left_sep = ' '
@@ -162,6 +177,8 @@ if has('nvim')
     " Enable deoplete on startup
     let g:echodoc#enable_at_startup = 1
     let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_debug = 1
+    let g:deoplete#enable_profile = 1
     let g:deoplete#disable_auto_complete = 1
     let g:deoplete#sources#jedi#python_path='/usr/local/bin/python3'
     inoremap <silent><expr> <TAB>
@@ -185,6 +202,21 @@ function! Multiple_cursors_after()
 endfunction
 
 "-----------------------------------------------
+" AsyncRun
+" ----------------------------------------------
+let g:asyncrun_open=12
+
+"-----------------------------------------------
+" Tagbar
+" ----------------------------------------------
+nmap <F8> :TagbarToggle<CR>
+
+"-----------------------------------------------
+" Easymotion
+" ----------------------------------------------
+nmap <leader><leader> <Plug>(easymotion-bd-w)
+
+"-----------------------------------------------
 " Golang
 " ----------------------------------------------
 let g:deoplete#sources#go#gocode_binary = '/Users/jberria/go/bin/gocode'
@@ -194,7 +226,8 @@ au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
 
-map <leader>gd :GoDef<cr>
+map <leader>gd :GoDoc<cr>
+map <leader>gj :GoDef<cr>
 
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -207,23 +240,29 @@ let g:go_highlight_types = 1
 
 " Run goimports when running gofmt
 let g:go_fmt_command = "goimports"
-let g:go_auto_sameids = 1
 
 " gometalinter configuration
-let g:go_metalinter_command = ""
-let g:go_metalinter_deadline = "5s"
-let g:go_metalinter_enabled = [
-    \ 'deadcode',
-    \ 'errcheck',
-    \ 'gas',
-    \ 'goconst',
-    \ 'gocyclo',
-    \ 'golint',
-    \ 'gosimple',
-    \ 'ineffassign',
-    \ 'vet',
-    \ 'vetshadow'
-    \]
+let g:go_metalinter_deadline = "10s"
+let g:go_metalinter_enabled = ['vet', 'golint', 'deadcode', 'errcheck', 'structcheck']
+
+"-----------------------------------------------
+" Typescript
+" ----------------------------------------------
+let g:nvim_typescript#javascript_support=1
+let g:nvim_typescript#signature_complete=1
+let g:nvim_typescript#type_info_on_hold=1
+
+map <leader>td :TSDoc<cr>
+map <leader>tg :TSDef<cr>
+
+"-----------------------------------------------
+" Rust
+" ----------------------------------------------
+let g:racer_cmd = '/Users/jberria/.cargo/bin/racer'
+let g:racer_experimental_completer=1
+let g:deoplete#sources#rust#racer_binary='/Users/jberria/.cargo/bin/racer'
+
+map <leader>rd <Plug>(rust-doc)
 
 "----------------------------------------------
 " Language: JavaScript
@@ -240,6 +279,13 @@ au FileType typescript set shiftwidth=2
 au FileType typescript set softtabstop=2
 
 "----------------------------------------------
+" Language: Rust
+"----------------------------------------------
+au FileType rust set noexpandtab
+au FileType rust set shiftwidth=2
+au FileType rust set softtabstop=2
+
+"----------------------------------------------
 " Language: Python
 "----------------------------------------------
 au FileType python set noexpandtab
@@ -254,7 +300,15 @@ set laststatus=2
 " Plugin: scrooloose/nerdtree
 "----------------------------------------------
 nnoremap <leader>d :NERDTreeToggle<cr>
-nnoremap <F2> :NERDTreeToggle<cr>
+nnoremap <C-b> :NERDTreeToggle<cr>
+
+" ---------------------------------------------
+" vim-netrw
+"----------------------------------------------
+let g:netrw_liststyle=1
+let g:netrw_banner=0
+let g:netrw_browse_split=4
+let g:netrw_winsize=25
 
 " Files to ignore
 let NERDTreeIgnore = [
@@ -266,15 +320,11 @@ let NERDTreeIgnore = [
     \ '^__pycache__$'
 \]
 
-" Show hidden files by default.
-let NERDTreeShowHidden = 1
-
-" Allow NERDTree to change session root.
-let g:NERDTreeChDirMode = 2
+let NERDTreeShowHidden = 1  " Show hidden files by default.
+let g:NERDTreeChDirMode = 2 " Allow NERDTree to change session root.
 
 "----------------------------------------------
 " Plugin: sebdah/vim-delve
 "----------------------------------------------
-" Set the Delve backend.
-let g:delve_backend = "native"
+let g:delve_backend = "native" " Set the Delve backend.
 
