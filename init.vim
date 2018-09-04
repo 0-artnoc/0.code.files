@@ -1,38 +1,46 @@
 "----------------------------------------------
-" Plugin management
-"----------------------------------------------
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'neomake/neomake'
+Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/denite.nvim'
+" Plug 'neomake/neomake'
+Plug 'vim-airline/vim-airline'
 Plug '/usr/local/opt/fzf'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'Shougo/echodoc.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
-Plug 'sebdah/vim-delve'
+
+" Python
+Plug 'zchee/deoplete-jedi'
+
+" Rust
 Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
+
+"Go
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
-Plug 'sebastianmarkow/deoplete-rust'
 Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
-Plug 'zchee/deoplete-jedi'                     " Go auto completion
+Plug 'sebdah/vim-delve'
+
+" Javascript
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'w0rp/ale'
+
+" Typescript
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript'
-Plug 'vim-airline/vim-airline'
 
 " Colorschemes
-Plug 'rakr/vim-one'
-Plug 'nightsense/simplifysimplify'
 Plug 'mhartington/oceanic-next'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -70,7 +78,7 @@ let mapleader = ','
 let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 " Remove trailing white spaces on save
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * %s/\s\+$//e
 " ignore files / folders
 set wildignore+=*/node_modules/*
 
@@ -80,12 +88,17 @@ set wildignore+=*/node_modules/*
 set rtp+=/usr/local/opt/fzf
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore node_modules --ignore .git -g ""'
 noremap <C-p> :Files<cr>
-noremap <C-c> :Commits<cr>
+noremap <C-r> :BLines<space>
+noremap <C-f> :Ag<space>
 noremap ;			:Buffers<cr>
 
-" neomake
-call neomake#configure#automake('nw', 750)
-let g:neomake_open_list = 2
+noremap <leader>gd :Gvdiff<cr>
+noremap <leader>gc :Commits<cr>
+noremap <leader>gs :Gstatus<cr>
+
+" " neomake
+" call neomake#configure#automake('nw', 750)
+" let g:neomake_open_list = 2
 
 "----------------------------------------------
 " Searching
@@ -120,8 +133,8 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Move between buffers with Shift + arrow key...
-nnoremap <S-Left> :bprevious<cr>
-nnoremap <S-Right> :bnext<cr>
+nnoremap <S-h> :bprevious<cr>
+nnoremap <S-l> :bnext<cr>
 
 " ... but skip the quickfix when navigating
 augroup qf
@@ -148,12 +161,12 @@ inoremap <expr> {<Enter> <SID>CloseBracket()
 "----------------------------------------------
 " Colors
 "----------------------------------------------
-colorscheme simplifysimplify-dark
 set termguicolors
 hi LineNr guibg=off
 highlight VertSplit guibg=off
 highlight VertSplit guifg=off
 set guifont=Monospace:h12
+colorscheme base16-tomorrow-night
 
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod=':t'
@@ -162,54 +175,63 @@ let g:airline_section_c='%t%m'
 let g:airline_section_y=''
 let g:airline_detect_modified=1
 let g:airline#extensions#whitespace#enabled = 0
-"let g:airline#extensions#tabline#enabled = 2
-"let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-"let g:airline#extensions#tabline#right_sep = ' '
-"let g:airline#extensions#tabline#right_alt_sep = '|'
 let g:airline_theme='oceanicnext'
 
 "----------------------------------------------
 " Plugin: Shougo/deoplete.nvim
 "----------------------------------------------
 if has('nvim')
-    " Enable deoplete on startup
+		" Disable the candidates in Comment/String syntaxes.
+		call deoplete#custom#source('_',
+		\ 'disabled_syntaxes', ['Comment', 'String'])
+
+    call deoplete#custom#option('ignore_sources', {'_': ['buffer', 'around']})
+    call deoplete#custom#option('auto_complete', v:false)
+    call deoplete#custom#option('refresh_always', v:true)
+
     let g:echodoc#enable_at_startup = 1
     let g:deoplete#enable_at_startup = 1
-    let g:deoplete#enable_debug = 1
-    let g:deoplete#enable_profile = 1
-    let g:deoplete#disable_auto_complete = 1
     let g:deoplete#sources#jedi#python_path='/usr/local/bin/python3'
+
+    " let g:deoplete#disable_auto_complete = 1
     inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
     \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
+    function! s:check_back_space() abort "{{{
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction"}}}
 
 endif
 
 " Disable deoplete when in multi cursor mode
-function! Multiple_cursors_before()
-    let b:deoplete_disable_auto_complete = 1
-endfunction
+" function g:Multiple_cursors_before()
+"   call deoplete#custom#buffer_option('auto_complete', v:false)
+" endfunction
+" function g:Multiple_cursors_after()
+"   call deoplete#custom#buffer_option('auto_complete', v:true)
+" endfunction
 
-function! Multiple_cursors_after()
-    let b:deoplete_disable_auto_complete = 0
-endfunction
+"-----------------------------------------------
+" Ale
+" ----------------------------------------------
+let g:airline#extensions#ale#enabled=1
+
+let g:ale_fixers= { 'javascript': ['eslint'], 'typescript': ['tslint']}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_text_changed='never'
+let g:ale_sign_error='●'
+let g:ale_lint_on_save=1
+let g:ale_list_window_size=5
+let g:ale_completion_enabled=0
 
 "-----------------------------------------------
 " AsyncRun
 " ----------------------------------------------
 let g:asyncrun_open=12
-
-"-----------------------------------------------
-" Tagbar
-" ----------------------------------------------
-nmap <F8> :TagbarToggle<CR>
 
 "-----------------------------------------------
 " Easymotion
@@ -226,7 +248,7 @@ au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
 
-map <leader>gd :GoDoc<cr>
+" map <leader>gd :GoDoc<cr>
 map <leader>gj :GoDef<cr>
 
 let g:go_highlight_build_constraints = 1
@@ -246,42 +268,32 @@ let g:go_metalinter_deadline = "10s"
 let g:go_metalinter_enabled = ['vet', 'golint', 'deadcode', 'errcheck', 'structcheck']
 
 "-----------------------------------------------
-" Typescript
-" ----------------------------------------------
-let g:nvim_typescript#javascript_support=1
-let g:nvim_typescript#signature_complete=1
-let g:nvim_typescript#type_info_on_hold=1
-
-map <leader>td :TSDoc<cr>
-map <leader>tg :TSDef<cr>
-
-"-----------------------------------------------
 " Rust
 " ----------------------------------------------
 let g:racer_cmd = '/Users/jberria/.cargo/bin/racer'
 let g:racer_experimental_completer=1
-let g:deoplete#sources#rust#racer_binary='/Users/jberria/.cargo/bin/racer'
 
 map <leader>rd <Plug>(rust-doc)
 
 "----------------------------------------------
 " Language: JavaScript
 "----------------------------------------------
-au FileType javascript set noexpandtab
+au FileType javascript set expandtab
 au FileType javascript set shiftwidth=2
 au FileType javascript set softtabstop=2
 
 "----------------------------------------------
 " Language: TypeScript
 "----------------------------------------------
-au FileType typescript set noexpandtab
+au FileType typescript set expandtab
 au FileType typescript set shiftwidth=2
 au FileType typescript set softtabstop=2
+let g:nvim_typescript#javascript_support=1
 
 "----------------------------------------------
 " Language: Rust
 "----------------------------------------------
-au FileType rust set noexpandtab
+au FileType rust set expandtab
 au FileType rust set shiftwidth=2
 au FileType rust set softtabstop=2
 
