@@ -11,11 +11,6 @@
         "when": "editorFocus"
     },
     {
-        "key": "cmd+l",
-        "command": "expandLineSelection",
-        "when": "editorTextFocus"
-    },
-    {
         "key": "ctrl+b",
         "command": "workbench.action.toggleSidebarVisibility"
     },
@@ -47,30 +42,44 @@
         "command": "git.stage"
     },
     {
+        "key": "shift+cmd+g",
+        "command": "workbench.view.scm"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-workbench.view.scm"
+    },
+    {
+        "key": "cmd+enter",
+        "command": "search.action.replace",
+        "when": "matchFocus && replaceActive && searchViewletVisible"
+    },
+    {
+        "key": "shift+cmd+1",
+        "command": "-search.action.replace",
+        "when": "matchFocus && replaceActive && searchViewletVisible"
+    },
+    {
+        "key": "shift+right",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "shift+left",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "extension.gitkrepo"
+    },
+    {
         "key": "cmd+g cmd+c",
         "command": "git.commitWithInput",
         "args": [
-            "-v"
+            "--verbose"
         ]
     },
-    // {
-    //     "key": "cmd+g cmd+s",
-    //     "command": "gitlens.showQuickRepoStatus",
-    //     "when": "gitlens:enabled"
-    // },
-    // {
-    //     "key": "alt+s",
-    //     "command": "-gitlens.showQuickRepoStatus",
-    //     "when": "gitlens:enabled"
-    // },
-    // {
-    //     "key": "alt+s",
-    //     "command": "-gitlens.showQuickRepoStatus",
-    //     "when": "gitlens:enabled && gitlens:keymap == 'standard'"
-    // },
     {
-        "key": "alt+c",
-        "command": "-gitlens.showQuickCommitFileDetails",
-        "when": "editorTextFocus && gitlens:enabled && gitlens:keymap == 'standard'"
-    }
+        "key": "cmd+j",
+        "command": "workbench.action.terminal.focus"
+    },
 ]

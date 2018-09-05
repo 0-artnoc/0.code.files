@@ -3,7 +3,7 @@
   "zenMode.hideTabs": false,
   "diffEditor.renderSideBySide": true,
 
-  "explorer.autoReveal": false,
+  "explorer.autoReveal": true,
   "explorer.openEditors.visible": 0,
   "explorer.sortOrder": "type",
 
@@ -24,20 +24,22 @@
   "editor.autoIndent": true,
   "editor.tabSize": 2,
   "editor.renderLineHighlight": "line",
-  "editor.insertSpaces": false,
+  "editor.insertSpaces": true,
   "editor.snippetSuggestions": "none",
   "editor.find.autoFindInSelection": true,
+  "editor.overviewRulerBorder": false,
 
   "window.restoreWindows": "none",
-  "window.titleBarStyle": "native",
-  "window.title": "${folderName}${separator}${activeEditorMedium}",
+  "window.titleBarStyle": "custom",
+  "window.title": "</>",
 
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.shell.osx": "/bin/zsh",
   "terminal.integrated.fontFamily": "Fira Code",
   "terminal.integrated.fontWeightBold": "normal",
-  "git.decorations.enabled": false,
+  "git.decorations.enabled": true,
 
+  "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "files.hotExit": "off",
   // exclude files from being shown in explorer
@@ -69,9 +71,12 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
   "tslint.jsEnable": true,
   "javascript.nameSuggestions": false,
+  "javascript.implicitProjectConfig.checkJs": true,
 
   //go
-  "go.coverageDecorator": "gutter",
+  "go.coverageDecorator": {
+    "type": "gutter"
+  },
   "go.coverageOptions": "showCoveredCodeOnly",
   "go.testFlags": ["-v"],
   "go.formatTool": "goimports",
@@ -90,20 +95,24 @@
     "editor.tabSize": 2,
     "editor.autoClosingBrackets": true
   },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.autoClosingBrackets": true
+  },
   "[cpp]": {
     "editor.tabSize": 4,
     "editor.autoClosingBrackets": true
   },
   "[go]": {
     "editor.insertSpaces": false,
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
   },
   "[c]": {
     "editor.tabSize": 4,
     "editor.autoClosingBrackets": true
   },
   "[json]": {
-    "editor.tabSize": 4
+    "editor.tabSize": 2
   },
   "[swift]": {
     "editor.quickSuggestions": {
@@ -111,47 +120,48 @@
       "comments": false,
       "strings": false
     },
-    "editor.tabSize": 4,
+    "editor.tabSize": 2,
     "editor.autoClosingBrackets": true
   },
   "[python]": {
     "editor.tabSize": 4,
-    "editor.insertSpaces": true,
     "editor.useTabStops": true
   },
 
   "workbench.statusBar.feedback.visible": false,
-  "workbench.iconTheme": "vscode-icons",
-  "workbench.colorTheme": "One Monokai Darker",
   "workbench.editor.swipeToNavigate": true,
   "workbench.activityBar.visible": false,
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.commandPalette.history": 5,
   "workbench.fontAliasing": "antialiased",
+  "workbench.editor.labelFormat": "short",
   "workbench.editor.revealIfOpen": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.colorCustomizations": {
-    "activityBar.background": "#1e1e1e",
-    "editorCursor.foreground": "#a8caeb",
-    "activityBarBadge.background": "#046dc4",
-    "scrollbarSlider.background": "#30445500",
+    "statusBar.background": "#3c6abe",
+    "statusBarItem.hoverBackground": "#216af0",
+    "statusBarItem.activeBackground": "#4c82e6",
+    "editorGutter.modifiedBackground": "#4b98d8",
+    "editor.findRangeHighlightBackground": "#993535",
   },
-  "window.zoomLevel": 0,
-
-  "react-native.ios.runArguments.simulator": [
-    "--simulator",
-    "iPhone X"
-  ],
 
   "vim.easymotion": true,
+  "vim.easymotionMarkerWidthPerChar": 9,
+  "vim.easymotionMarkerHeight": 16,
+  "vim.easymotionMarkerFontSize": "16",
   "vim.leader": ",",
   "vim.useSystemClipboard": true,
-  "vim.showmodename": false,
+  "vim.showmodename": true,
   "vim.useCtrlKeys": false,
 
   "explorer.confirmDelete": false,
   "diffEditor.ignoreTrimWhitespace": true,
   "debug.showInStatusBar": "never",
-  "gitk.fontFamily": "Fira Code",
+  "workbench.editor.showTabs": true,
+
+  "githd.explorerView.withFolder": false,
+  "githd.logView.displayExpressStatus": false,
+  "breadcrumbs.enabled": false,
+  "workbench.colorTheme": "Base16 Dark Twilight",
 }
