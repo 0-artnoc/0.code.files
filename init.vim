@@ -4,8 +4,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc.vim'
-" Plug 'Shougo/denite.nvim'
-" Plug 'neomake/neomake'
 Plug 'vim-airline/vim-airline'
 Plug '/usr/local/opt/fzf'
 Plug 'skywind3000/asyncrun.vim'
@@ -13,6 +11,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
@@ -51,7 +50,6 @@ set autoindent                    " take indent for new line from previous line
 set smartindent                   " enable smart indentation
 set autoread                      " reload file if the file changes on the disk
 set autowrite                     " write when switching buffers
-"set autowriteall                  " write on :quit
 set clipboard=unnamedplus
 set completeopt-=preview          " remove the horrendous preview window
 set encoding=utf-8
@@ -68,14 +66,14 @@ set softtabstop=2
 set tabstop=2
 set title                         " let vim set the terminal title
 set updatetime=750                " redraw the status bar often
-"set cmdheight=2
 set noshowmode
 set hidden
 set ignorecase
+set signcolumn=yes
 syntax enable
 
 let mapleader = ','
-let g:python_host_prog = '/usr/local/bin/python2'
+let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 " Remove trailing white spaces on save
 autocmd BufWritePre * %s/\s\+$//e
@@ -95,10 +93,6 @@ noremap ;			:Buffers<cr>
 noremap <leader>gd :Gvdiff<cr>
 noremap <leader>gc :Commits<cr>
 noremap <leader>gs :Gstatus<cr>
-
-" " neomake
-" call neomake#configure#automake('nw', 750)
-" let g:neomake_open_list = 2
 
 "----------------------------------------------
 " Searching
@@ -218,7 +212,7 @@ endif
 " ----------------------------------------------
 let g:airline#extensions#ale#enabled=1
 
-let g:ale_fixers= { 'javascript': ['eslint'], 'typescript': ['tslint']}
+let g:ale_fixers= {'javascript': ['eslint'], 'typescript': ['tslint']}
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
