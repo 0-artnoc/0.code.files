@@ -1,13 +1,9 @@
-"----------------------------------------------
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc.vim'
 Plug 'vim-airline/vim-airline'
 Plug '/usr/local/opt/fzf'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -24,7 +20,8 @@ Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
 
 "Go
-Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+" Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+Plug 'fatih/vim-go'
 Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
 Plug 'sebdah/vim-delve'
 
@@ -38,8 +35,8 @@ Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'HerringtonDarkholme/yats.vim'
 
 " Colorschemes
-Plug 'mhartington/oceanic-next'
-Plug 'chriskempson/base16-vim'
+Plug 'tomasiser/vim-code-dark'
+Plug 'dunstontc/vim-vscode-theme'
 
 call plug#end()
 
@@ -67,6 +64,7 @@ set tabstop=2
 set title                         " let vim set the terminal title
 set updatetime=750                " redraw the status bar often
 set noshowmode
+set noshowcmd
 set hidden
 set ignorecase
 set signcolumn=yes
@@ -87,12 +85,26 @@ set rtp+=/usr/local/opt/fzf
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore node_modules --ignore .git -g ""'
 noremap <C-p> :Files<cr>
 noremap <C-r> :BLines<space>
-noremap <C-f> :Ag<space>
+noremap <C-s> :Ag<space>
 noremap ;			:Buffers<cr>
 
 noremap <leader>gd :Gvdiff<cr>
 noremap <leader>gc :Commits<cr>
 noremap <leader>gs :Gstatus<cr>
+
+" Delete the current buffer without leaving split window
+nnoremap <leader>bd :bp\|bd#<cr>
+
+" Disable arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+"-----------------------------------------------
+" Easymotion
+"-----------------------------------------------
+nmap <leader><leader> <Plug>(easymotion-bd-w)
 
 "----------------------------------------------
 " Searching
@@ -110,25 +122,6 @@ endif
 " center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
-"----------------------------------------------
-" Vimwiki
-"----------------------------------------------
-let g:vimwiki_list=[{'path': '~/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-nmap <leader>wv <plug>VimwikiVSplitLink
-
-"----------------------------------------------
-" Navigation
-"----------------------------------------------
-" Disable arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
-" Move between buffers with Shift + arrow key...
-nnoremap <S-h> :bprevious<cr>
-nnoremap <S-l> :bnext<cr>
 
 " ... but skip the quickfix when navigating
 augroup qf
@@ -156,20 +149,19 @@ inoremap <expr> {<Enter> <SID>CloseBracket()
 " Colors
 "----------------------------------------------
 set termguicolors
-hi LineNr guibg=off
+set cul
 highlight VertSplit guibg=off
 highlight VertSplit guifg=off
 set guifont=Monospace:h12
-colorscheme base16-tomorrow-night
+colorscheme dark_plus
 
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#fnamemod=':t'
 let g:airline_powerline_fonts=1
 let g:airline_section_c='%t%m'
 let g:airline_section_y=''
+let g:airline_section_z='%p%%'
 let g:airline_detect_modified=1
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline_theme='oceanicnext'
+let g:airline_theme='codedark'
 
 "----------------------------------------------
 " Plugin: Shougo/deoplete.nvim
@@ -222,25 +214,17 @@ let g:ale_lint_on_save=1
 let g:ale_list_window_size=5
 let g:ale_completion_enabled=0
 
-"-----------------------------------------------
-" AsyncRun
-" ----------------------------------------------
-let g:asyncrun_open=12
+let g:ale_rust_cargo_use_check = 1
+let g:ale_rust_cargo_check_all_targets = 1
+
 
 "-----------------------------------------------
-" Easymotion
+" Language: Golang
 " ----------------------------------------------
-nmap <leader><leader> <Plug>(easymotion-bd-w)
-
-"-----------------------------------------------
-" Golang
-" ----------------------------------------------
-let g:deoplete#sources#go#gocode_binary = '/Users/jberria/go/bin/gocode'
-
 au FileType go set noexpandtab
-au FileType go set shiftwidth=4
-au FileType go set softtabstop=4
-au FileType go set tabstop=4
+au FileType go set shiftwidth=2
+au FileType go set softtabstop=2
+au FileType go set tabstop=2
 
 " map <leader>gd :GoDoc<cr>
 map <leader>gj :GoDef<cr>
@@ -256,18 +240,11 @@ let g:go_highlight_types = 1
 
 " Run goimports when running gofmt
 let g:go_fmt_command = "goimports"
+let g:deoplete#sources#go#gocode_binary = '/Users/jberria/go/bin/gocode'
 
 " gometalinter configuration
 let g:go_metalinter_deadline = "10s"
 let g:go_metalinter_enabled = ['vet', 'golint', 'deadcode', 'errcheck', 'structcheck']
-
-"-----------------------------------------------
-" Rust
-" ----------------------------------------------
-let g:racer_cmd = '/Users/jberria/.cargo/bin/racer'
-let g:racer_experimental_completer=1
-
-map <leader>rd <Plug>(rust-doc)
 
 "----------------------------------------------
 " Language: JavaScript
@@ -282,6 +259,9 @@ au FileType javascript set softtabstop=2
 au FileType typescript set expandtab
 au FileType typescript set shiftwidth=2
 au FileType typescript set softtabstop=2
+au FileType typescript nnoremap <buffer> <leader>td :TSDef<cr>
+au FileType typescript nnoremap <buffer> <F2> :TSRenam<cr>
+
 let g:nvim_typescript#javascript_support=1
 
 "----------------------------------------------
@@ -290,6 +270,10 @@ let g:nvim_typescript#javascript_support=1
 au FileType rust set expandtab
 au FileType rust set shiftwidth=2
 au FileType rust set softtabstop=2
+au FileType rust nnoremap <buffer> <leader>rd <Plug>(rust-doc)
+
+let g:racer_cmd = '/Users/jberria/.cargo/bin/racer'
+let g:racer_experimental_completer=1
 
 "----------------------------------------------
 " Language: Python
