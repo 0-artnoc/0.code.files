@@ -270,7 +270,7 @@ let g:nvim_typescript#javascript_support=1
 au FileType rust set expandtab
 au FileType rust set shiftwidth=2
 au FileType rust set softtabstop=2
-au FileType rust nnoremap <buffer> <leader>rd <Plug>(rust-doc)
+au FileType rust nmap gd <Plug>(rust-def-split)
 
 let g:racer_cmd = '/Users/jberria/.cargo/bin/racer'
 let g:racer_experimental_completer=1
