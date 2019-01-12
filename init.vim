@@ -37,6 +37,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 " Colorschemes
 Plug 'tomasiser/vim-code-dark'
 Plug 'dunstontc/vim-vscode-theme'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -152,8 +153,9 @@ set termguicolors
 set cul
 highlight VertSplit guibg=off
 highlight VertSplit guifg=off
-set guifont=Monospace:h12
+set guifont=Monospace:h24
 colorscheme dark_plus
+set t_md=
 
 let g:airline_powerline_fonts=1
 let g:airline_section_c='%t%m'
@@ -172,14 +174,14 @@ if has('nvim')
 		\ 'disabled_syntaxes', ['Comment', 'String'])
 
     call deoplete#custom#option('ignore_sources', {'_': ['buffer', 'around']})
-    call deoplete#custom#option('auto_complete', v:false)
+    " call deoplete#custom#option('auto_complete', v:false)
     call deoplete#custom#option('refresh_always', v:true)
 
     let g:echodoc#enable_at_startup = 1
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#sources#jedi#python_path='/usr/local/bin/python3'
 
-    " let g:deoplete#disable_auto_complete = 1
+    let g:deoplete#disable_auto_complete = 1
     inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
@@ -212,7 +214,7 @@ let g:ale_lint_on_text_changed='never'
 let g:ale_sign_error='●'
 let g:ale_lint_on_save=1
 let g:ale_list_window_size=5
-let g:ale_completion_enabled=0
+let g:ale_open_list=1
 
 let g:ale_rust_cargo_use_check = 1
 let g:ale_rust_cargo_check_all_targets = 1
@@ -227,7 +229,8 @@ au FileType go set softtabstop=2
 au FileType go set tabstop=2
 
 " map <leader>gd :GoDoc<cr>
-map <leader>gj :GoDef<cr>
+au FileType go map <F12> :GoDef<cr>
+au FileType go noremap <C-r> :BLines func<cr>
 
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -259,8 +262,8 @@ au FileType javascript set softtabstop=2
 au FileType typescript set expandtab
 au FileType typescript set shiftwidth=2
 au FileType typescript set softtabstop=2
-au FileType typescript nnoremap <buffer> <leader>td :TSDef<cr>
-au FileType typescript nnoremap <buffer> <F2> :TSRenam<cr>
+au FileType typescript nmap <buffer> <F12> :TSDef<cr>
+au FileType typescript nmap <buffer> <F2> :TSRenam<cr>
 
 let g:nvim_typescript#javascript_support=1
 
@@ -268,9 +271,10 @@ let g:nvim_typescript#javascript_support=1
 " Language: Rust
 "----------------------------------------------
 au FileType rust set expandtab
-au FileType rust set shiftwidth=2
-au FileType rust set softtabstop=2
-au FileType rust nmap gd <Plug>(rust-def-split)
+au FileType rust set shiftwidth=4
+au FileType rust set softtabstop=4
+au FileType rust nmap <F12> <Plug>(rust-def)
+au FileType rust noremap <C-r> :BLines fn<cr>
 
 let g:racer_cmd = '/Users/jberria/.cargo/bin/racer'
 let g:racer_experimental_completer=1
