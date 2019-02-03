@@ -130,7 +130,7 @@ values."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
    dotspacemacs-startup-lists '((recents . 0)
-                                (projects . 5))
+                                (projects . 0))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
@@ -144,8 +144,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   ;; dotspacemacs-default-font '("Source Code Pro"
-   dotspacemacs-default-font '("Fira Code"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 13
                                :weight normal
                                :width normal
@@ -230,7 +229,7 @@ values."
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
-   dotspacemacs-loading-progress-bar t
+   dotspacemacs-loading-progress-bar nil
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
    dotspacemacs-fullscreen-at-startup nil
@@ -254,7 +253,7 @@ values."
    ;; If non nil show the color guide hint for transient state keys. (default t)
    dotspacemacs-show-transient-state-color-guide t
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
@@ -263,16 +262,18 @@ values."
    ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
    ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
    ;; This variable can also be set to a property list for finer control:
-   ;; '(:relative nil
-   ;;   :disabled-for-modes dired-mode
-   ;;                       doc-view-mode
-   ;;                       markdown-mode
-   ;;                       org-mode
-   ;;                       pdf-view-mode
-   ;;                       text-mode
-   ;;   :size-limit-kb 1000)
+   dotspacemacs-line-numbers '(:relative nil
+                                         :disabled-for-modes
+                                         dired-mode
+                                         doc-view-mode
+                                         markdown-mode
+                                         org-mode
+                                         pdf-view-mode
+                                         text-mode
+                                         :size-limit-kb 1000
+                                         )
    ;; (default nil)
-   dotspacemacs-line-numbers t
+   ;; dotspacemacs-line-numbers nil
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -335,35 +336,47 @@ you should place your code here."
 
   ;; set go format command on save
   (setq gofmt-command "goimports")
+  (setq rust-format-on-save t)
 
   ;; set to python 3
   (setq flycheck-python-pycompile-executable "python3")
 
   ;; we don't need to save recent files
   (recentf-mode 0)
+  (setq helm-mini-default-sources '(helm-source-buffers-list
+                                    helm-source-buffer-not-found))
+
+  ;; turn off current line highlight
+  (global-hl-line-mode 0)
+
+  ;; scrolling
+  ;; (spacemacs/toggle-smooth-scrolling-off)
+  (setq auto-window-vscroll nil
+        scroll-conservatively 1000
+        mouse-wheel-scroll-amount '(1)
+        mouse-wheel-progressive-speed nil)
 
   ;; custom key bindings
   (global-set-key (kbd "C-x C-b") 'bs-show)
   (spacemacs/set-leader-keys "bk" 'kill-buffer-and-window)
   (spacemacs/set-leader-keys "gL" 'magit-log-all)
+  (spacemacs/set-leader-keys "gd" 'magit-diff-buffer-file)
 
   ;; truncate long lines
   (set-default 'truncate-lines t)
   (spacemacs/toggle-truncate-lines-on)
-  (add-hook 'text-mode-hook 'spacemacs/toggle-visual-line-navigation-on)
+  ;; (add-hook 'text-mode-hook 'spacemacs/toggle-visual-line-navigation-on)
 
   ;; remove the small circle buttons in the spaceline minor modes
   (setq-default spaceline-minor-modes-p nil)
+  (setq-default spaceline-line-column-p nil)
+  (setq-default spaceline-buffer-position-p nil)
 
   ;; remove the studpid scroll bars
   (setq-default scroll-bar-mode nil)
 
-  ;; disable to linter tool tips
+  ;; disable the linter tool tips
   (setq-default syntax-checking-enable-tooltips nil)
-
-  ;; org mode
-  (setq-default org-projectile-file "~/.emacs.d/private/local/TODOs.org")
-  (setq org-agenda-files (list "~/.emacs.d/private/local/TODOs.org"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -375,7 +388,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot vmd-mode mmm-mode markdown-toc gh-md git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet ace-jump-helm-line helm-ag yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional cython-mode company-anaconda anaconda-mode pythonic flycheck-rust flycheck-pos-tip flycheck-gometalinter smeargle orgit magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit-popup git-commit with-editor fuzzy company-statistics company-go company auto-yasnippet yasnippet ac-ispell auto-complete magit toml-mode racer pos-tip cargo markdown-mode rust-mode go-guru go-eldoc go-mode tide typescript-mode flycheck ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy)))
+    (company-quickhelp web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot vmd-mode mmm-mode markdown-toc gh-md git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet ace-jump-helm-line helm-ag yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional cython-mode company-anaconda anaconda-mode pythonic flycheck-rust flycheck-pos-tip flycheck-gometalinter smeargle orgit magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit-popup git-commit with-editor fuzzy company-statistics company-go company auto-yasnippet yasnippet ac-ispell auto-complete magit toml-mode racer pos-tip cargo markdown-mode rust-mode go-guru go-eldoc go-mode tide typescript-mode flycheck ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy)))
  '(paradox-github-token t)
  '(recentf-max-saved-items 0))
 (custom-set-faces
