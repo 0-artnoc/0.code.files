@@ -1,158 +1,180 @@
 {
-    "zenMode.hideTabs": false,
-    "diffEditor.renderSideBySide": true,
-    "explorer.openEditors.visible": 0,
-    "explorer.sortOrder": "type",
-
-    "search.location": "panel",
-
-    "editor.folding": false,
-    "editor.lineNumbers": "on",
-    "editor.selectionHighlight": false,
-    "editor.wordBasedSuggestions": false,
-    "editor.snippetSuggestions": "none",
-    "editor.suggestSelection": "first",
-    "editor.suggestOnTriggerCharacters": false,
-    "editor.quickSuggestions": {
-      "other": false,
-      "comments": false,
-      "strings": false
-    },
-    "editor.cursorBlinking": "solid",
-    "editor.fontLigatures": true,
-    "editor.fontFamily": "Fira Code",
-    "editor.minimap.enabled": false,
-    "editor.matchBrackets": true,
-    "editor.formatOnType": true,
-    "editor.renderIndentGuides": false,
-    "editor.autoIndent": true,
+  "zenMode.hideTabs": false,
+  "diffEditor.renderSideBySide": true,
+  "explorer.openEditors.visible": 0,
+  "explorer.sortOrder": "type",
+  "search.location": "panel",
+  "search.useReplacePreview": false,
+  "search.useIgnoreFiles": true,
+  "search.showLineNumbers": true,
+  "editor.folding": false,
+  "editor.selectionHighlight": false,
+  "editor.wordBasedSuggestions": false,
+  "editor.snippetSuggestions": "none",
+  "editor.suggestSelection": "first",
+  // "editor.suggestOnTriggerCharacters": false,
+  "editor.quickSuggestionsDelay": 500,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.parameterHints.enabled": false,
+  "editor.cursorBlinking": "solid",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Fira Code",
+  "editor.minimap.enabled": false,
+  "editor.matchBrackets": true,
+  "editor.formatOnType": false,
+  "editor.formatOnSave": true,
+  "editor.renderIndentGuides": false,
+  "editor.autoIndent": true,
+  "editor.tabSize": 2,
+  "editor.renderLineHighlight": "none",
+  "editor.insertSpaces": true,
+  "editor.find.autoFindInSelection": true,
+  "editor.overviewRulerBorder": false,
+  "window.restoreWindows": "none",
+  "window.titleBarStyle": "custom",
+  "window.title": "${activeEditorMedium}",
+  "terminal.external.osxExec": "Alacritty.app",
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "terminal.integrated.fontFamily": "Fira Code",
+  "terminal.integrated.fontWeightBold": "normal",
+  "git.decorations.enabled": true,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.hotExit": "off",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*/__pycache__": true,
+    "**/node_modules": true,
+    "**/target/debug": true, // rust
+    "**/target/rls": true, // rust
+    "~/.rustup": true, // rust
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/typings": true,
+    "**/__pycache__": true,
+    "**/.DS_Store": true,
+    "**/private": true,
+    "**/var": true,
+    "**/.git": true,
+    "**/*.map": true,
+    "**/ios/build": true, // react native
+    "**/target/debug": true, // rust
+    "**/target/rls": true, // rust
+    "~/.rustup": true, // rust
+  },
+  //python
+  "python.pythonPath": "/usr/local/bin/python3",
+  "python.venvPath": "~/PyEnvironments",
+  "python.workspaceSymbols.enabled": false,
+  //typescript
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  "tslint.jsEnable": true,
+  "javascript.suggest.names": false,
+  "javascript.implicitProjectConfig.checkJs": true,
+  //go
+  "go.coverageDecorator": {
+    "type": "gutter"
+  },
+  "go.coverageOptions": "showCoveredCodeOnly",
+  "go.testFlags": [
+    "-v"
+  ],
+  "go.formatTool": "goimports",
+  "go.lintTool": "golint",
+  "go.lintFlags": [
+    "--disable=all",
+    "--enable=golint",
+    "--enable=deadcode",
+    "--enable=errcheck",
+    "--enable=structcheck",
+  ],
+  //rust
+  "rust.clippy_preference": "opt-in",
+  //language settings
+  "[typescript]": {
     "editor.tabSize": 2,
-    "editor.renderLineHighlight": "none",
-    "editor.insertSpaces": true,
-    "editor.find.autoFindInSelection": true,
-    "editor.overviewRulerBorder": false,
-
-    "window.restoreWindows": "none",
-    "window.titleBarStyle": "custom",
-    "window.title": "</>",
-
-    "terminal.external.osxExec": "Alacritty.app",
-    "terminal.integrated.shell.osx": "/bin/zsh",
-    "terminal.integrated.fontFamily": "Fira Code",
-    "terminal.integrated.fontWeightBold": "normal",
-    "git.decorations.enabled": true,
-
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    "files.hotExit": "off",
-    // exclude files from being shown in explorer
-    "files.exclude": {
-      "**/.git": true,
-      "**/.svn": true,
-      "**/.hg": true,
-      "**/CVS": true,
-      "**/.DS_Store": true,
-      "**/*/__pycache__": true,
-      "**/node_modules": true
-    },
-    //python
-    "python.pythonPath": "/usr/local/bin/python3",
-    "python.venvPath": "~/PyEnvironments",
-    "search.exclude": {
-      "**/node_modules": true,
-      "**/bower_components": true,
-      "**/typings": true,
-      "**/__pycache__": true,
-      "**/.DS_Store": true,
-      "**/private": true,
-      "**/var": true,
-      "**/.git": true,
-      "**/*.map": true,
-      "**/ios/build": true // react native
-    },
-    //typescript
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-    "tslint.jsEnable": true,
-    "javascript.suggest.names": false,
-    "javascript.implicitProjectConfig.checkJs": true,
-
-    //go
-    "go.coverageDecorator": {
-      "type": "gutter"
-    },
-    "go.coverageOptions": "showCoveredCodeOnly",
-    "go.testFlags": ["-v"],
-    "go.formatTool": "goimports",
-    "go.lintTool": "gometalinter",
-    "go.lintFlags": [
-      "--disable=all",
-      "--enable=vet",
-      "--enable=golint",
-      "--enable=deadcode",
-      "--enable=errcheck",
-      "--enable=structcheck",
-    ],
-
-    //language settings
-    "[typescript]": {
-      "editor.tabSize": 2,
-      "editor.autoClosingBrackets": "always"
-    },
-    "[javascript]": {
-      "editor.tabSize": 2,
-      "editor.autoClosingBrackets": "always"
-    },
-    "[cpp]": {
-      "editor.tabSize": 2,
-      "editor.autoClosingBrackets": "always"
-    },
-    "[rust]": {
-      "editor.tabSize": 2,
-      "editor.autoClosingBrackets": "always"
-    },
-    "[c]": {
-      "editor.tabSize": 4,
-      "editor.autoClosingBrackets": "always"
-    },
-    "[json]": {
-      "editor.tabSize": 2
-    },
-    "[python]": {
-      "editor.tabSize": 4,
-      "editor.useTabStops": true
-    },
-
-    "workbench.statusBar.feedback.visible": false,
-    "workbench.editor.swipeToNavigate": true,
-    "workbench.activityBar.visible": false,
-    "workbench.startupEditor": "none",
-    "workbench.statusBar.visible": true,
-    "workbench.commandPalette.history": 5,
-    "workbench.fontAliasing": "antialiased",
-    "workbench.editor.labelFormat": "short",
-    "workbench.editor.revealIfOpen": true,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.colorCustomizations": {
-      "statusBar.background": "#202020",
-    },
-
-    "vim.easymotion": true,
-    "vim.easymotionMarkerWidthPerChar": 9,
-    "vim.easymotionMarkerHeight": 16,
-    "vim.easymotionMarkerFontSize": "16",
-    "vim.leader": ",",
-    "vim.useSystemClipboard": true,
-    "vim.showmodename": true,
-    "vim.useCtrlKeys": false,
-
-    "explorer.confirmDelete": false,
-    "diffEditor.ignoreTrimWhitespace": true,
-    "debug.showInStatusBar": "never",
-    "workbench.editor.showTabs": true,
-
-    "breadcrumbs.enabled": false,
-    "explorer.autoReveal": false,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    "editor.parameterHints.enabled": false,
-  }
+    "editor.autoClosingBrackets": "always"
+  },
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.autoClosingBrackets": "always"
+  },
+  "[cpp]": {
+    "editor.tabSize": 2,
+    "editor.autoClosingBrackets": "always"
+  },
+  "[rust]": {
+    "editor.tabSize": 4,
+    "editor.autoClosingBrackets": "always"
+  },
+  "[c]": {
+    "editor.tabSize": 2,
+    "editor.autoClosingBrackets": "always"
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "workbench.editor.showTabs": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.restoreViewState": false,
+  "workbench.statusBar.feedback.visible": false,
+  "workbench.editor.swipeToNavigate": true,
+  "workbench.startupEditor": "none",
+  "workbench.statusBar.visible": true,
+  "workbench.commandPalette.history": 5,
+  "workbench.fontAliasing": "antialiased",
+  "workbench.editor.labelFormat": "short",
+  "workbench.editor.revealIfOpen": true,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.colorTheme": "Zenburn",
+  "workbench.colorCustomizations": {
+    // "statusBar.background": "#2f2f2f"
+    "panel.background": "#3F3F3F",
+    "editor.background": "#3F3F3F",
+    "editor.lineHighlightBackground": "#383838",
+    "editorCursor.foreground": "#DCDCCC",
+    "widget.shadow": "#00000000",
+    "statusBar.foreground": "#8FB28F",
+    "statusBar.background": "#2B2B2B",
+    "editorGutter.modifiedBackground": "#257bca",
+    "editorGutter.addedBackground": "#2d9636"
+  },
+  "vim.easymotion": true,
+  "vim.easymotionMarkerWidthPerChar": 9,
+  "vim.easymotionMarkerHeight": 16,
+  "vim.easymotionMarkerFontSize": "16",
+  "vim.leader": ",",
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.history": 1,
+  "explorer.confirmDelete": false,
+  "explorer.autoReveal": false,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "debug.showInStatusBar": "never",
+  "breadcrumbs.enabled": false,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "debug.toolBarLocation": "docked",
+  "python.linting.enabled": true,
+  "debug.openExplorerOnEnd": true,
+  "window.zoomLevel": 0,
+  "git-graph.showStatusBarItem": false,
+  "git-graph.showUncommittedChanges": false,
+  "git-graph.graphStyle": "angular",
+  "statusbarerror.wholeLine.show": true,
+  "vim.showmodename": false,
+  "vim.showcmd": false,
+  "workbench.activityBar.visible": false,
+  "workbench.panel.defaultLocation": "right",
+  "search.quickOpen.includeSymbols": true,
+}
