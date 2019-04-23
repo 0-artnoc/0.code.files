@@ -262,8 +262,8 @@ values."
    ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
    ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
    ;; This variable can also be set to a property list for finer control:
-   dotspacemacs-line-numbers '(:relative nil
-                                         :disabled-for-modes
+   ;; dotspacemacs-line-numbers '(:relative t
+      dotspacemacs-line-numbers '(:disabled-for-modes
                                          dired-mode
                                          doc-view-mode
                                          markdown-mode
@@ -357,10 +357,16 @@ you should place your code here."
         mouse-wheel-progressive-speed nil)
 
   ;; custom key bindings
-  (global-set-key (kbd "C-x C-b") 'bs-show)
   (spacemacs/set-leader-keys "bk" 'kill-buffer-and-window)
   (spacemacs/set-leader-keys "gL" 'magit-log-all)
   (spacemacs/set-leader-keys "gd" 'magit-diff-buffer-file)
+  (spacemacs/set-leader-keys "sp" 'projectile-multi-occur)
+  (spacemacs/set-leader-keys-for-major-mode 'rust-mode
+    "cx" 'cargo-process-clippy)
+
+  (add-hook 'occur-hook
+            '(lambda ()
+               (switch-to-buffer-other-window "*Occur*")))
 
   ;; truncate long lines
   (set-default 'truncate-lines t)
@@ -388,7 +394,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-quickhelp web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot vmd-mode mmm-mode markdown-toc gh-md git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet ace-jump-helm-line helm-ag yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional cython-mode company-anaconda anaconda-mode pythonic flycheck-rust flycheck-pos-tip flycheck-gometalinter smeargle orgit magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit-popup git-commit with-editor fuzzy company-statistics company-go company auto-yasnippet yasnippet ac-ispell auto-complete magit toml-mode racer pos-tip cargo markdown-mode rust-mode go-guru go-eldoc go-mode tide typescript-mode flycheck ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy)))
+    (company-emacs-eclim eclim transient lv company-quickhelp web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern tern coffee-mode org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot vmd-mode mmm-mode markdown-toc gh-md git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet ace-jump-helm-line helm-ag yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional cython-mode company-anaconda anaconda-mode pythonic flycheck-rust flycheck-pos-tip flycheck-gometalinter smeargle orgit magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit-popup git-commit with-editor fuzzy company-statistics company-go company auto-yasnippet yasnippet ac-ispell auto-complete magit toml-mode racer pos-tip cargo markdown-mode rust-mode go-guru go-eldoc go-mode tide typescript-mode flycheck ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump popup f dash s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy)))
  '(paradox-github-token t)
  '(recentf-max-saved-items 0))
 (custom-set-faces

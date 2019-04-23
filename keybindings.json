@@ -70,5 +70,9 @@
     {
         "key": "ctrl+p",
         "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+-",
+        "command": "workbench.action.splitEditorDown"
     }
 ]
