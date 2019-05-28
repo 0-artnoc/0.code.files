@@ -1,0 +1,5 @@
+rofi.theme: /usr/share/rofi/themes/arthur.rasi
+rofi.width: 25
+rofi.lines: 4
+rofi.modi: window,run
+rofi.case-sensitive: false
