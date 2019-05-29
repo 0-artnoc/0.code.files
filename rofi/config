@@ -1,5 +1,7 @@
-rofi.theme: /usr/share/rofi/themes/arthur.rasi
-rofi.width: 25
-rofi.lines: 4
-rofi.modi: window,run
+rofi.theme: /usr/share/rofi/themes/solarized_alternate.rasi
+rofi.font: Source Code Pro 12
+rofi.combi-mobi: window,drun
+rofi.modi: window
+rofi.width: 35
+rofi.lines: 6
 rofi.case-sensitive: false
