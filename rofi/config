@@ -1,7 +1,11 @@
+rofi.color-enabled: true
 rofi.theme: /usr/share/rofi/themes/solarized_alternate.rasi
-rofi.font: Source Code Pro 12
-rofi.combi-mobi: window,drun
-rofi.modi: window
+
+rofi.case-sensitive: false
+rofi.padding: 10
 rofi.width: 35
 rofi.lines: 6
-rofi.case-sensitive: false
+rofi.font: Iosevka 12
+
+rofi.combi-mobi: window,drun
+rofi.modi: window

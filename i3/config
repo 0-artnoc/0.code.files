@@ -9,6 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+set $term /usr/bin/urxvt
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -30,7 +31,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec $term #i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -188,12 +189,15 @@ client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
 # wallpaper
 exec_always --no-startup-id feh --bg-scale /home/nexes/Pictures/wallpaper/ubuntudingowallpaper.jpg
 
+#compton
+# exec_always --no-startup-id compton --config /home/nexes/.config/compton/compton.conf
+
 # i3-gaps
 # You can also use any non-zero value if you'd like to have a border
 for_window [class=".*"] border pixel 2
 gaps inner 8
 gaps outer 0
-smart_gaps on
+#smart_gaps on
 smart_borders on
 
 # setup for KDE
@@ -208,5 +212,5 @@ for_window [class="Kmix"] floating enable; border none
 for_window [class="Klipper"] floating enable; border none
 for_window [class="Plasmoidviewer"] floating enable; border none
 for_window [class="(?i)*nextcloud*"] floating disable
-for_window [class="ksysguard"] floating enable; border none
+for_window [class="ksysguard"] floating enable
 for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move up 475px, no_focus
