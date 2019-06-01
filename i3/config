@@ -96,8 +96,8 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: Main"
-set $ws2 "2: Web"
+set $ws1 "1"
+set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
@@ -182,21 +182,26 @@ bindsym $mod+r mode "resize"
 #         status_command i3status
 # }
 
-# focus
 # class                 border  backgr. text    indicator child_border
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
 
 # wallpaper
 exec_always --no-startup-id feh --bg-scale /home/nexes/Pictures/wallpaper/ubuntudingowallpaper.jpg
 
+#polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 #compton
-# exec_always --no-startup-id compton --config /home/nexes/.config/compton/compton.conf
+# exec_always --no-startup-id compton -b --config /home/nexes/.config/compton/compton.conf
+
+# for some reeason i need to do this for urxvt
+exec xrdb .Xresources
 
 # i3-gaps
 # You can also use any non-zero value if you'd like to have a border
 for_window [class=".*"] border pixel 2
-gaps inner 8
-gaps outer 0
+gaps inner 12
+gaps outer 4
 #smart_gaps on
 smart_borders on
 
