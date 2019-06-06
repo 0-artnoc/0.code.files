@@ -186,7 +186,7 @@ bindsym $mod+r mode "resize"
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
 
 # wallpaper
-exec_always --no-startup-id feh --bg-scale /home/nexes/Pictures/wallpaper/ubuntudingowallpaper.jpg
+exec_always --no-startup-id feh --bg-scale /home/nexes/Pictures/wallpaper/planewallpaper.jpg
 
 #polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -199,7 +199,7 @@ exec xrdb .Xresources
 
 # i3-gaps
 # You can also use any non-zero value if you'd like to have a border
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] pixel 2
 gaps inner 12
 gaps outer 4
 #smart_gaps on
@@ -219,3 +219,6 @@ for_window [class="Plasmoidviewer"] floating enable; border none
 for_window [class="(?i)*nextcloud*"] floating disable
 for_window [class="ksysguard"] floating enable
 for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move up 475px, no_focus
+
+# SDL development
+for_window [class="sdl"] floating enable; border 2
