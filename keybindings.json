@@ -1,78 +1,79 @@
+// Place your key bindings in this file to override the defaults
 // Place your key bindings in this file to overwrite the defaults
 [
-    {
-        "key": "alt+space",
-        "command": "editor.action.triggerParameterHints",
-        "when": "editorHasSignatureHelpProvider && editorTextFocus"
-    },
-    {
-        "key": "ctrl+r",
-        "command": "workbench.action.gotoSymbol",
-        "when": "editorFocus"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+/",
-        "command": "editor.action.commentLine",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "cmd+g cmd+d",
-        "command": "git.openChange"
-    },
-    {
-        "key": "cmd+g cmd+a",
-        "command": "git.stage"
-    },
-    {
-        "key": "shift+cmd+g",
-        "command": "workbench.view.scm"
-    },
-    {
-        "key": "cmd+enter",
-        "command": "search.action.replace",
-        "when": "matchFocus && replaceActive && searchViewletVisible"
-    },
-    {
-        "key": "shift+cmd+1",
-        "command": "-search.action.replace",
-        "when": "matchFocus && replaceActive && searchViewletVisible"
-    },
-    {
-        "key": "ctrl+l",
-        "command": "workbench.action.nextEditor",
-        "when": "vim.active && vim.mode != 'Insert'"
-    },
-    {
-        "key": "ctrl+h",
-        "command": "workbench.action.previousEditor",
-        "when": "vim.active && vim.mode != 'Insert'"
-    },
-    {
-        "key": "cmd+g cmd+c",
-        "command": "git.commitWithInput",
-        "args": [
-            "--verbose"
-        ]
-    },
-    {
-        "key": "cmd+j",
-        "command": "workbench.action.terminal.focus"
-    },
-    {
-        "key": ";",
-        "command": "workbench.action.showAllEditors",
-        "when": "vim.active && vim.mode == 'Normal'"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "cmd+-",
-        "command": "workbench.action.splitEditorDown"
-    }
+  {
+    "key": "alt+space",
+    "command": "editor.action.triggerParameterHints",
+    "when": "editorHasSignatureHelpProvider && editorTextFocus"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "workbench.action.gotoSymbol",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+/",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+g cmd+d",
+    "command": "git.openChange"
+  },
+  {
+    "key": "cmd+g cmd+a",
+    "command": "git.stage"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "search.action.replace",
+    "when": "matchFocus && replaceActive && searchViewletVisible"
+  },
+  {
+    "key": "shift+cmd+1",
+    "command": "-search.action.replace",
+    "when": "matchFocus && replaceActive && searchViewletVisible"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.nextEditor",
+    "when": "vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.previousEditor",
+    "when": "vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "cmd+g cmd+c",
+    "command": "git.commit",
+    "args": [
+      "--verbose"
+    ]
+  },
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": ";",
+    "command": "workbench.action.showAllEditors",
+    "when": "vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "cmd+-",
+    "command": "workbench.action.splitEditorDown"
+  }
 ]

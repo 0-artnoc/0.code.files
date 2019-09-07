@@ -37,7 +37,7 @@
   "window.restoreWindows": "none",
   "window.titleBarStyle": "custom",
   "window.title": "${activeEditorMedium}",
-  "terminal.integrated.fontFamily": "Fira Code",
+  "terminal.integrated.fontFamily": "Source Code Pro",
   "terminal.integrated.fontWeightBold": "normal",
   "git.decorations.enabled": true,
   "files.insertFinalNewline": true,
@@ -86,7 +86,6 @@
   ],
   //typescript
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-  "tslint.jsEnable": true,
   "javascript.suggest.names": false,
   "javascript.implicitProjectConfig.checkJs": true,
   //go
@@ -109,7 +108,8 @@
   //rust
   "rust.clippy_preference": "opt-in",
   "rust-client.channel": "stable",
-  "rust-client.rustupPath": "/home/nexes/.cargo/bin/",
+  "rust-client.rustupPath": "/home/nexes/.cargo/bin/rustup",
+  "rust-client.rlsPath": "/home/nexes/.cargo/bin/rls",
   //language settings
   "[typescript]": {
     "editor.tabSize": 2,
@@ -150,7 +150,6 @@
   "workbench.editor.showTabs": false,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.restoreViewState": false,
-  "workbench.statusBar.feedback.visible": false,
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.commandPalette.history": 5,
@@ -194,7 +193,7 @@
   "workbench.activityBar.visible": false,
   "workbench.panel.defaultLocation": "right",
   "search.quickOpen.includeSymbols": true,
-  "java.format.comments.enabled": false,
   "extensions.ignoreRecommendations": false,
   "window.menuBarVisibility": "toggle",
+  "statusbarerror.wholeLine.show": true,
 }
