@@ -22,7 +22,7 @@
   "editor.parameterHints.enabled": false,
   "editor.cursorBlinking": "solid",
   "editor.fontLigatures": true,
-  "editor.fontFamily": "Source Code Pro",
+  "editor.fontFamily": "Fira Code",
   "editor.minimap.enabled": false,
   "editor.matchBrackets": true,
   "editor.formatOnType": false,
@@ -37,7 +37,7 @@
   "window.restoreWindows": "none",
   "window.titleBarStyle": "custom",
   "window.title": "${activeEditorMedium}",
-  "terminal.integrated.fontFamily": "Source Code Pro",
+  "terminal.integrated.fontFamily": "Fira Code",
   "terminal.integrated.fontWeightBold": "normal",
   "git.decorations.enabled": true,
   "files.insertFinalNewline": true,
@@ -73,44 +73,46 @@
     "**/typings": true,
     "**/var": true
   },
-  //python
-  "python.pythonPath": "/usr/bin/python3",
-  "python.workspaceSymbols.enabled": false,
-  "python.linting.pylintArgs": [
-    "--max-line-length=120",
-    "--disable=c0111",
-    "--disable=c0112"
-  ],
-  "python.formatting.autopep8Args": [
-    ""
-  ],
-  //typescript
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-  "javascript.suggest.names": false,
-  "javascript.implicitProjectConfig.checkJs": true,
-  //go
-  "go.coverageDecorator": {
-    "type": "gutter"
-  },
-  "go.coverageOptions": "showCoveredCodeOnly",
-  "go.testFlags": [
-    "-v"
-  ],
-  "go.formatTool": "goimports",
-  "go.lintTool": "golint",
-  "go.lintFlags": [
-    "--disable=all",
-    "--enable=golint",
-    "--enable=deadcode",
-    "--enable=errcheck",
-    "--enable=structcheck",
-  ],
-  //rust
-  "rust.clippy_preference": "opt-in",
-  "rust-client.channel": "stable",
-  "rust-client.rustupPath": "/home/nexes/.cargo/bin/rustup",
-  "rust-client.rlsPath": "/home/nexes/.cargo/bin/rls",
-  //language settings
+  // TODO languages
+  // //python
+  // "python.pythonPath": "/usr/bin/python3",
+  // "python.workspaceSymbols.enabled": false,
+  // "python.linting.pylintArgs": [
+  //   "--max-line-length=120",
+  //   "--disable=c0111",
+  //   "--disable=c0112"
+  // ],
+  // "python.formatting.autopep8Args": [
+  //   ""
+  // ],
+  // //typescript
+  // "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  // "javascript.suggest.names": false,
+  // "javascript.implicitProjectConfig.checkJs": true,
+  // //go
+  // "go.coverageDecorator": {
+  //   "type": "gutter"
+  // },
+  // "go.coverageOptions": "showCoveredCodeOnly",
+  // "go.testFlags": [
+  //   "-v"
+  // ],
+  // "go.formatTool": "goimports",
+  // "go.lintTool": "golint",
+  // "go.lintFlags": [
+  //   "--disable=all",
+  //   "--enable=golint",
+  //   "--enable=deadcode",
+  //   "--enable=errcheck",
+  //   "--enable=structcheck",
+  // ],
+  // //rust
+  // "rust.clippy_preference": "opt-in",
+  // "rust-client.channel": "stable",
+  // "rust-client.rustupPath": "/home/nexes/.cargo/bin/rustup",
+  // "rust-client.rlsPath": "/home/nexes/.cargo/bin/rls",
+  // //language settings
+  // TODO languages
   "[typescript]": {
     "editor.tabSize": 2,
     "editor.autoClosingBrackets": "always"
@@ -147,7 +149,6 @@
   "[json]": {
     "editor.tabSize": 2
   },
-  "workbench.editor.showTabs": false,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.restoreViewState": false,
   "workbench.startupEditor": "none",
@@ -157,16 +158,7 @@
   "workbench.editor.revealIfOpen": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.colorCustomizations": {
-    "statusBar.background": "#2B2B2B",
-    //   "panel.background": "#3F3F3F",
-    //   "editor.background": "#3F3F3F",
-    //   "editor.lineHighlightBackground": "#383838",
-    //   "editorCursor.foreground": "#DCDCCC",
-    //   "widget.shadow": "#00000000",
-    //   "statusBar.foreground": "#ffffff",
-    //   "statusBar.background": "#2B2B2B",
-    //   "editorGutter.modifiedBackground": "#257bca",
-    //   "editorGutter.addedBackground": "#2d9636"
+    "statusBar.background": "#2B2B2B"
   },
   "vim.easymotion": true,
   "vim.easymotionMarkerWidthPerChar": 9,
@@ -191,9 +183,11 @@
   "git-graph.showUncommittedChanges": false,
   "git-graph.graphStyle": "angular",
   "workbench.activityBar.visible": false,
-  "workbench.panel.defaultLocation": "right",
   "search.quickOpen.includeSymbols": true,
   "extensions.ignoreRecommendations": false,
   "window.menuBarVisibility": "toggle",
   "statusbarerror.wholeLine.show": true,
+  "editor.fontSize": 12,
+  "terminal.integrated.fontSize": 12,
+  "workbench.colorTheme": "Egoist One",
 }
