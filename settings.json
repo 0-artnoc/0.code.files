@@ -1,4 +1,5 @@
 {
+  "workbench.startupEditor": "none",
   "zenMode.hideTabs": false,
   "diffEditor.renderSideBySide": true,
   "explorer.openEditors.visible": 0,
@@ -11,18 +12,17 @@
   "editor.selectionHighlight": false,
   "editor.wordBasedSuggestions": false,
   "editor.snippetSuggestions": "none",
-  "editor.suggestSelection": "first",
-  // "editor.suggestOnTriggerCharacters": false,
-  "editor.quickSuggestionsDelay": 500,
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.quickSuggestionsDelay": 1000,
   "editor.quickSuggestions": {
-    "other": true,
+    "other": false,
     "comments": false,
     "strings": false
   },
   "editor.parameterHints.enabled": false,
   "editor.cursorBlinking": "solid",
   "editor.fontLigatures": true,
-  "editor.fontFamily": "Fira Code",
+  "editor.fontFamily": "'Cascadia Code', Consolas, 'Courier New', monospace",
   "editor.minimap.enabled": false,
   "editor.matchBrackets": true,
   "editor.formatOnType": false,
@@ -32,12 +32,12 @@
   "editor.tabSize": 2,
   "editor.renderLineHighlight": "none",
   "editor.insertSpaces": true,
-  "editor.find.autoFindInSelection": true,
+  "editor.find.autoFindInSelection": "always",
   "editor.overviewRulerBorder": false,
   "window.restoreWindows": "none",
   "window.titleBarStyle": "custom",
   "window.title": "${activeEditorMedium}",
-  "terminal.integrated.fontFamily": "Fira Code",
+  "terminal.integrated.fontFamily": "'Cascadia Code', Consolas, 'Courier New', monospace",
   "terminal.integrated.fontWeightBold": "normal",
   "git.decorations.enabled": true,
   "files.insertFinalNewline": true,
@@ -53,6 +53,7 @@
     "**/node_modules": true,
     "**/target/debug": true,
     "**/target/rls": true,
+    "**/.rustup": true,
     "**/.classpath": true,
     "**/*.class": true,
     "**/.project": true,
@@ -70,49 +71,10 @@
     "**/private": true,
     "**/target/debug": true,
     "**/target/rls": true,
+    "**/.rustup": true,
     "**/typings": true,
     "**/var": true
   },
-  // TODO languages
-  // //python
-  // "python.pythonPath": "/usr/bin/python3",
-  // "python.workspaceSymbols.enabled": false,
-  // "python.linting.pylintArgs": [
-  //   "--max-line-length=120",
-  //   "--disable=c0111",
-  //   "--disable=c0112"
-  // ],
-  // "python.formatting.autopep8Args": [
-  //   ""
-  // ],
-  // //typescript
-  // "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
-  // "javascript.suggest.names": false,
-  // "javascript.implicitProjectConfig.checkJs": true,
-  // //go
-  // "go.coverageDecorator": {
-  //   "type": "gutter"
-  // },
-  // "go.coverageOptions": "showCoveredCodeOnly",
-  // "go.testFlags": [
-  //   "-v"
-  // ],
-  // "go.formatTool": "goimports",
-  // "go.lintTool": "golint",
-  // "go.lintFlags": [
-  //   "--disable=all",
-  //   "--enable=golint",
-  //   "--enable=deadcode",
-  //   "--enable=errcheck",
-  //   "--enable=structcheck",
-  // ],
-  // //rust
-  // "rust.clippy_preference": "opt-in",
-  // "rust-client.channel": "stable",
-  // "rust-client.rustupPath": "/home/nexes/.cargo/bin/rustup",
-  // "rust-client.rlsPath": "/home/nexes/.cargo/bin/rls",
-  // //language settings
-  // TODO languages
   "[typescript]": {
     "editor.tabSize": 2,
     "editor.autoClosingBrackets": "always"
@@ -149,45 +111,36 @@
   "[json]": {
     "editor.tabSize": 2
   },
+  "breadcrumbs.enabled": false,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "window.menuBarVisibility": "toggle",
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.restoreViewState": false,
-  "workbench.startupEditor": "none",
   "workbench.statusBar.visible": true,
   "workbench.commandPalette.history": 5,
   "workbench.editor.labelFormat": "short",
   "workbench.editor.revealIfOpen": true,
   "workbench.editor.enablePreviewFromQuickOpen": false,
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#2B2B2B"
-  },
-  "vim.easymotion": true,
-  "vim.easymotionMarkerWidthPerChar": 9,
-  "vim.easymotionMarkerHeight": 16,
-  "vim.easymotionMarkerFontSize": "16",
-  "vim.leader": ",",
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": false,
-  "vim.history": 1,
-  "explorer.confirmDelete": false,
-  "explorer.autoReveal": false,
-  "diffEditor.ignoreTrimWhitespace": true,
-  "debug.showInStatusBar": "never",
-  "breadcrumbs.enabled": false,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
-  "debug.toolBarLocation": "docked",
-  "python.linting.enabled": true,
-  "debug.openExplorerOnEnd": true,
-  "window.zoomLevel": 0,
+  "extensions.ignoreRecommendations": false,
   "git-graph.showStatusBarItem": false,
   "git-graph.showUncommittedChanges": false,
   "git-graph.graphStyle": "angular",
-  "workbench.activityBar.visible": false,
-  "search.quickOpen.includeSymbols": true,
-  "extensions.ignoreRecommendations": false,
-  "window.menuBarVisibility": "toggle",
-  "statusbarerror.wholeLine.show": true,
-  "editor.fontSize": 12,
-  "terminal.integrated.fontSize": 12,
-  "workbench.colorTheme": "Egoist One",
+  "vim.easymotion": false,
+  "vim.leader": ",",
+  "vim.useSystemClipboard": true,
+  "vim.history": 1,
+  "vim.useCtrlKeys": false,
+  "git.untrackedChanges": "separate",
+  "editor.suggest.showSnippets": false,
+  "editor.suggestSelection": "first",
+  "editor.lightbulb.enabled": false,
+  "editor.occurrencesHighlight": false,
+  "workbench.colorTheme": "GitHub Sharp Dark",
+  "problems.showCurrentInStatus": true,
+  "terminal.integrated.rendererType": "experimentalWebgl",
+  "workbench.iconTheme": "vscode-icons",
+  "explorer.decorations.colors": false,
+  "explorer.autoReveal": false,
 }
