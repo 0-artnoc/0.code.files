@@ -30,7 +30,7 @@ setting files for git...and ...
 - []() [target=_blank];
 - []() [target=_blank];
 
-- Git
+-Git
 ---
 
 - []() [target=_blank];
