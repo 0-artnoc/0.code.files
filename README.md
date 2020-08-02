@@ -4,35 +4,46 @@ setting files for git...and ...
 
 -cli
 ---
-- []() ['target=_blank'];
-- []() [=_blank];
-- []() [=_blank];
-- []() [=_blank];
-- []() [=_];
-- []() [=_];
-- []() [=_blank];
-- []() [=_blank];
+
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
 
 -nodejs
 ---
-- []() [=_];
-- []() [=_];
-- []() [=_];
-- []() [=_];
-- []() [=_];
-- []() [=_];
-- []() [=_];
-- []() [=_];
+
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
 
 - Git
 ---
-- []() [=_];
-- []() [=_];
-- []() [=_];
-- []() [=_];
-- []() [=_];
-- []() [=_];
-- []() [=_];
-- []() [=_];
+
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+- []() [target=_blank];
+
+---
 
 
