@@ -1,4 +1,4 @@
-[Bash Style Guide](https://github.com/0-artnoc/0.code.files/Bash_Style_Guide.md)
+[Bash Style Guide](https://github.com/0-artnoc/0.code.files/blob/master/Bash_Style_Guide.md)
 ================ 
 This style guide is meant to outline how to write bash scripts with
 a style that makes them safe and predictable.  This guide is based
